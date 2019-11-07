@@ -1,6 +1,8 @@
-![](https://img.shields.io/badge/CBPi%20addin-functionable_for_V3-green.svg)  ![](https://img.shields.io/github/license/JamFfm/PHMeasureADS1115.svg?style=flat) ![](https://img.shields.io/github/last-commit/JamFfm/PHMeasure.svg?style=flat) ![](https://img.shields.io/github/release-pre/JamFfm/PHMeasureADS1115.svg?style=flat)
+![](https://img.shields.io/badge/CBPi%20beta%20addin-functionable_for_V3-green.svg)  ![](https://img.shields.io/github/license/JamFfm/PHMeasureADS1115.svg?style=flat) ![](https://img.shields.io/github/last-commit/JamFfm/PHMeasure.svg?style=flat) ![](https://img.shields.io/github/release-pre/JamFfm/PHMeasureADS1115.svg?style=flat)
 
 # PHMeasureADS1115 add-on for CraftBeerPi 3
+
+This is Beta Software
 
 *Craftbeerpi3* sensor for measuring ph values.
 Using the ADS115 A/D via I2C connection
