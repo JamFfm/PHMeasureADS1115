@@ -37,7 +37,7 @@ Therefore you need an analog/digital converter like the ADS1115 (16Bit)**
   
 # How to connect
 
-![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/RaspiGPIOI2C.jpg "Example wiring, have a look at wireing I2C")
+![Test Graph](https://github.com/JamFfm/PHMeasure/blob/master/RaspberryPiPHSensorSteckplatine.png "Example wiring, not campatible with code. Have a look at Software SPI")
 Be aware that you use the **connections below** if you don't change the code. Not use the MCP3008 connections in the picture!
 **But use the Picture to wire the levelshifter and the probe-board. In this picture channel 0 is connected**
 
@@ -53,7 +53,7 @@ To connect the ADS1115 to the Raspberry Pi use the following connections:
 - Alert     have a look at the specs of ADS1115 for Alert events
 - A0        to Po of the PhMeasure Board. Put a level shifter 5v/3,3v inbetween because the Raspi pin can only stand 3.3v
 
-![Test Graph](https://github.com/JamFfm/PHMeasure/blob/master/GPIO.jpg "Pins of Raspi")
+![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/RaspiGPIOI2C.jpg "Example wiring, have a look at wireing I2C")
 
 
 # How to Install
@@ -135,7 +135,9 @@ To determine the Unit per Step (=PH_step in formula) is important to know.
 
 # Finally the code
 
-voltage = 5 / 1024.0 * measure; //classic digital to voltage conversion
+16 Bit = 65472 possible values
+
+voltage = 5 / 65472 * measure; //classic digital to voltage conversion
 
 // PH_step = (voltage@PH7 - voltage@PH4) / (PH7 - PH4) = (2.5-3.05) / (7-4) = (-.55/2.99) = -0.1839....
 
