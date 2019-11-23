@@ -33,7 +33,7 @@ Search for this: "Liquid PH Value Erkennung Detect Modul +BNC Electrode Probe fo
 **The probe board is an analog sensor. RaspberryPi can read only digital sensors.
 Therefore you need an analog/digital converter like the ADS1115 (16Bit)**
 
-![Test Graph](https://github.com/JamFfm/PHMeasure/blob/master/sensors_raspberry_pi_mcp3008pin.gif  "Pins of MCP3008")
+![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/ADS1115.jpg  "Pins of ADS1115")
   
 # How to connect
 
@@ -96,7 +96,7 @@ To connect the ADS1115 to the Raspberry Pi use the following connections:
 * Blue potentiometer close to pins: limit adjustment.
 * Black component with 103 printed (not the one between potentiometers): thermistor for temperature compensation.
 
-# Calibration has to be corrected
+# Calibration: this section is invalid and has to be corrected
 
 ## The offset
 
