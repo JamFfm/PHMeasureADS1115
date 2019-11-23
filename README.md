@@ -37,7 +37,7 @@ Therefore you need an analog/digital converter like the ADS1115 (16Bit)**
   
 # How to connect
 
-![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/Raspi GPIOI2C.jpg "Example wiring, have a look at wireing I2C")
+![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/RaspiGPIOI2C.jpg "Example wiring, have a look at wireing I2C")
 Be aware that you use the **connections below** if you don't change the code. Not use the MCP3008 connections in the picture!
 **But use the Picture to wire the levelshifter and the probe-board. In this picture channel 0 is connected**
 
