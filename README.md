@@ -195,7 +195,8 @@ You can easily change the addon for different analog sensors.
 There are only some lines to change. 
 
 # Known Problems
-- No problems known until now.
+- This is just to show how to use the ADS1115 to show values
+- You hae to find out the right parameter to show the right voltage values and the right pH values
 - When using in the rotating mash no stable values are shown 
 - Wrong spelling
 - no temperature calibration
