@@ -194,6 +194,8 @@ You can easily change the addon for different analog sensors.
 
 There are only some lines to change. 
 
+I use the ADS115 in a CraftBeerPi Extensionboard 3 in combination with a livel shifter
+
 # Known Problems
 - This is just to show how to use the ADS1115 to show values
 - You hae to find out the right parameter to show the right voltage values and the right pH values
