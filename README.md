@@ -135,9 +135,9 @@ To determine the Unit per Step (=PH_step in formula) is important to know.
 
 # Finally the code
 
-16 Bit = 65472 possible values
+16 Bit = 32767 possible values
 
-voltage = 5 / 65472 * measure; //classic digital to voltage conversion
+voltage = 5 / 32767 * measure; //classic digital to voltage conversion
 
 // PH_step = (voltage@PH7 - voltage@PH4) / (PH7 - PH4) = (2.5-3.05) / (7-4) = (-.55/2.99) = -0.1839....
 
