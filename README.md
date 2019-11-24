@@ -212,8 +212,8 @@ Report issues either in this Git section or at Facebook at the [Craftbeerpi grou
 I got all my knowledge from these links:
 
 
-- https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/mcp3008
-
+- http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
+  
   Used this for the libs and classes
  
 
@@ -222,13 +222,9 @@ I got all my knowledge from these links:
   last post first page, for understanding probe in general
 
 
-- https://tutorials-raspberrypi.de/wp-content/uploads/2016/10/Raspberry-Pi-Gas-Sensor-MQ2-Steckplatine.png 
-
-  wiring the probe-board and the levelshifter
-
-
 - https://www.botshop.co.za/how-to-use-a-ph-probe-and-sensor/
 
   additional info
+  
   
 - https://raspberrypi.stackexchange.com/questions/96653/calibrate-ph-4502c-ph-meter
