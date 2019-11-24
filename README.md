@@ -135,9 +135,12 @@ To determine the Unit per Step (=PH_step in formula) is important to know.
 
 # Finally the code
 
-16 Bit = 32767 possible values
+16 Bit = 32767 possible values between 0V and Gain max V and
+32767 possible values between -Gain max V and 0v
 
-voltage = 5 / 32767 * measure; //classic digital to voltage conversion
+With gain 1 (+-4.096V)
+print('%d - %.5f V'% (value, float(value)*4.096/32768.0))
+voltage = measure * 4.096 / 32768 ; //classic digital to voltage conversion
 
 // PH_step = (voltage@PH7 - voltage@PH4) / (PH7 - PH4) = (2.5-3.05) / (7-4) = (-.55/2.99) = -0.1839....
 
