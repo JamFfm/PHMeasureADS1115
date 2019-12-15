@@ -17,8 +17,8 @@ German link to ph in Beer
 
 - https://www.maischemalzundmehr.de/index.php?inhaltmitte=exp_maischph
 
-## Advantages
-works much more stable like the MC3008 IC Module.
+# Advantages
+works much more stable like the MCP3008 IC Module.
 
  
 # The probe and board for this Craftbeerpi 3 addon
