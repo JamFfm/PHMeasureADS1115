@@ -169,7 +169,26 @@ I never tryed that until now.
 
 # Parameter
 
-There are 3 parameter to select:
+## Name
+Text as You want
+
+## Type
+Name of the pH Sensor Modul like PHSensorADS1x15
+
+## ADS1x15 Address
+this is the I2C address of the ADS module.
+Default ist 0x48.
+If there are several modules ore other modules with the same address you con choose a different address.
+This means you haf to solder connections different. Have a look in the ADS 1x15 datasheed.
+Is seldom used. So im most cases entering 0x48 will do it.
+
+## ADS1x15 Channel
+this is the channel you want to read. There are up to 4 channels called A0-A3.
+You have to connect nsor to the channel.
+
+
+
+There are some parameter to be select in the parameter section:
 
 ## Digit
 This shows the value of the MCP 3008 and runs from 0-1024.
