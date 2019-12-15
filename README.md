@@ -202,6 +202,7 @@ Or pick a different gain to change the range of voltages that are read:
 -   4 = +/-1.024V
 -   8 = +/-0.512V
 -  16 = +/-0.256V
+
 See table 3 in the ADS1015/ADS1115 datasheet for more info on gain.
 
 If you have no idea enter 1.
