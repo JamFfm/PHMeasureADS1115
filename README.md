@@ -209,19 +209,19 @@ If you have no idea enter 1.
 
 ## Data Type
 
-- #Digit#
+- Digit:  
 This shows the value of the MCP 3008 and runs from 0-1024.
 This is the basic of all measurement.
 
 
-- Voltage
+- Voltage: 
 This shows the calculated value of the Voltage measurement.
 Voltage = 5 / 1024.0 * Digit
 5 is the basic voltage of the Board
 This means 1024 digit is equal to 5V.
 
 
-- pH Value
+- pH Value: 
 This shows the calculated value of the pH measurment.
 phvalue = 7 + ((2.532 - voltage) / *0.1839* )
 As discribed above the *0.1839* has to be adopted in the code.
