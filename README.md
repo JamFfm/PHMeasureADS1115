@@ -178,19 +178,21 @@ Name of the pH Sensor Modul like PHSensorADS1x15
 ## ADS1x15 Address
 this is the I2C address of the ADS module.
 Default ist 0x48.
-If there are several modules ore other modules with the same address you con choose a different address.
-This means you haf to solder connections different. Have a look in the ADS 1x15 datasheed.
-Is seldom used. So im most cases entering 0x48 will do it.
+If there are two or more modules with the same address you can choose a different address.
+This means you have to solder connections in a different way. Have a look in the ADS1x15-datasheed.
+This parameter Is rarely used. So in most cases entering 0x48 will do it.
 
 ## ADS1x15 Channel
 this is the channel you want to read. There are up to 4 channels called A0-A3.
 You have to connect the sensor to the channel.
 
 ## ADS1x15 Gain
-is is the amplifier of the ADS module.
+this is the amplifier of the ADS module.
 These are the selectible ranges:
 
 For example: Choose a gain of 1 for reading voltages from 0 to 4.09V.
+this will be the right parameter für the pH probe.
+
 Or pick a different gain to change the range of voltages that are read:
 - 2/3 = +/-6.144V     we use 0 for this range
 -   1 = +/-4.096V
@@ -199,6 +201,8 @@ Or pick a different gain to change the range of voltages that are read:
 -   8 = +/-0.512V
 -  16 = +/-0.256V
 See table 3 in the ADS1015/ADS1115 datasheet for more info on gain.
+
+If you have no idea enter 1.
 
 ## Data Types
 
