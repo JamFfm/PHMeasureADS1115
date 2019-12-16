@@ -173,10 +173,9 @@ Put a voltmeter to measure the voltage between GND and Po to measure voltage.
 You need the measured voltage while producing a shortcut between inner pole and outer area of the BNC of the probeboard.
 You need the measured voltage when measuring the buffer pH 4.01
 
-`cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115
+ `cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115`
 
- python calibration.py
-`
+ `python calibration.py`
 
 Follow instructions
 
