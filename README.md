@@ -207,7 +207,7 @@ this is the amplifier of the ADS module.
 These are the selectible ranges:
 
 For example: Choose a gain of 1 for reading voltages from 0 to 4.09V.
-This will be the right parameter für the pH probe.
+**Gain 1 will be the right parameter for the pH probe.**
 
 Or pick a different gain to change the range of voltages that are read:
 - 2/3 = +/-6.144V     we use 0 for this range
@@ -219,42 +219,42 @@ Or pick a different gain to change the range of voltages that are read:
 
 See table 3 in the ADS1015/ADS1115 datasheet for more info on gain.
 
-**If you have no idea enter 1**
+If you have no idea enter 1
 
 ## Data Type
 
 - **Digit:**  
-This shows the value of the MCP 3008 and runs from 0-1024.
-This is the basic of all measurement.
+    This shows the value of the MCP 3008 and runs from 0-1024.
+    This is the basic of all measurement.
 
 
 - **Voltage:** 
-This shows the calculated value of the Voltage measurement.
-It depends on the Gain selected.
+    This shows the calculated value of the Voltage measurement.
+    It depends on the Gain selected.
 
-Example: Gain 1 = +/-4.096V
+    Example: Gain 1 = +/-4.096V
 
-Voltage = ((4.096V * Digit) / 32767) - offset
+    Voltage = ((4.096V * Digit) / 32767) - offset
 
-This means 32767 digit is equal to 4.096V.
+    This means 32767 digit is equal to 4.096V.
 
-Why only 32767? Because there are another 32767 values of the negative numbers. But we only deal with the positive number range.
+    Why only 32767? Because there are another 32767 values of the negative numbers. But we only deal with the positive number range.
 
-Check it by this: Put a voltmeter to measure the voltage between GND and Po.
-PH ist calculated by voltage so it should be checked with voltmeter.
+    Check it by this: Put a voltmeter to measure the voltage between GND and Po.
+    PH ist calculated by voltage so it should be checked with voltmeter.
 
 
 - **pH Value:** 
-This shows the calculated value of the pH measurment.
+    This shows the calculated value of the pH measurment.
 
-phvalue = 7 + ((2.532V - measured_voltage) / *0.1839* )
+    phvalue = 7 + ((2.532V - measured_voltage) / *0.1839* )
 
-As discribed above (calibration) the *0.1839* has to be adopted in the code.
-You may need a different factor. So this one is always **individual**
+    As discribed above (calibration) the *0.1839* has to be adopted in the code.
+    You may need a different factor. So this one is always **individual**
 
-Example I used (7 + ((2.548V - measured_voltage) / 0.17826))
+    Example I used (7 + ((2.548V - measured_voltage) / 0.17826))
 
-Maybe the 2.532V (or 2.548V) has to be adopted to the voltage value you measure with the short circuit between the the small BNC hole and the external part of BNC. The voltage of short circuit is the aquivelent to pH 7.
+    Maybe the 2.532V (or 2.548V) has to be adopted to the voltage value you measure with the short circuit between the the small BNC    hole and the external part of BNC. The voltage of short circuit is the aquivelent to pH 7.
 
 
 # Hint
