@@ -32,7 +32,7 @@ But first you have to delete the Folder
 
 # What for?
 
-The pH has got an influence on the beer taste. Please inforn yourself in the literature.
+The pH has got an influence on the beer taste. Please inform yourself in the literature.
 Usually the mash will be between 4.5pH and 5.8pH.
 
 >**The target pH for the mash usually should be between 5.3pH and 5.7pH**
