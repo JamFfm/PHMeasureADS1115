@@ -174,8 +174,10 @@ You need the measured voltage while producing a shortcut between inner pole and 
 You need the measured voltage when measuring the buffer pH 4.01
 
 `cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115
+
  python calibration.py
 `
+
 Follow instructions
 
 # Usage
