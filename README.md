@@ -151,7 +151,7 @@ The PH_probe is calculated by taking the known pH 7 voltage (2.5v) where we add 
 
 To determine the Unit per Step (=PH_step in formula) is important to know.
 
-# Finally the code
+## Finally the code
 
 16 Bit = 32767 possible values between 0V and Gain max V and
 32767 possible values between -Gain max V and 0v
@@ -165,6 +165,19 @@ PH_step = (voltage@PH7 - voltage@PH4) / (PH7 - PH4.01) = (2.5-3.05) / (7-4,01) =
 PH_probe = PH7 - ((voltage@PH7 - voltage@probe) / PH_step)
 
 phvalue = 7 + ((2.5 - voltage) / *0.1839* )
+
+## Calibration Script
+
+There is a very small script to determine the Factor and the Formula:
+Put a voltmeter to measure the voltage between GND and Po to measure voltage.
+You need the measured voltage while producing a shortcut between inner pole and outer area of the BNC of the probeboard.
+You need the measured voltage when measuring the buffer pH 4.01
+
+ `cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115`
+
+ `python calibration.py`
+
+Follow instructions
 
 # Usage
 
