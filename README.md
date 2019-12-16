@@ -112,32 +112,34 @@ http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
 * Blue potentiometer close to pins: limit adjustment.
 * Black component with 103 printed (not the one between potentiometers): thermistor for temperature compensation.
 
-# Calibration: this section is invalid and has to be corrected
+# Calibration: 
 
 ## The offset
 
-The offset is the shifting of all pH values to a specific voltage range. If a pH 7 output a voltage of 2.2v and pH 8 a voltage of 2.1v, then a shift of +0.3v move the pH 7 to 2.5v and the pH 8 to 2.4v. 
+The **offset** is the shifting of all pH values to a specific voltage range. If a pH 7 output a voltage of 2.2v and pH 8 a voltage of 2.1v, then a shift of +0.3v move the pH 7 to 2.5v and the pH 8 to 2.4v. 
 
 
-This can be done on the board or via software but it's probably easyer on the board because it's probe independant and there are less programming to do.
+The offset can be done on the board or via software but it's probably easyer on the board because it's probe independant and there are less programming to do.
 
 
-Connect GND (both) to Raspi GND and and Vcc to Raspi 5v. Please use a levelshifter to avoid damage at the GPIO which only support 3.3v. 
+Connect GND (both) of the probeboard to Raspi GND and and probeboard Vcc to Raspi 5v. Please use a levelshifter to avoid damage at the GPIO which only support 3.3v. 
 
-Remove the probe and do a short circuit between the the small BNC hole and the external part of BNC. 
+Remove the probe (disconnect BNC) and do a short circuit between the the small BNC hole and the external part of BNC. Use a wire to do that. 
 
-Put a voltmeter to measure the voltage between GND and Po. Adjust the pot (close BNC) until the output is 2.5v. 
+Put a voltmeter to measure the voltage between probeboard GND and probeboard Po. Adjust the pot (close BNC) until the output is nearest to 2.5v. 
 
-Now the pH 7 have an exact value of 2.5v (511 with analogRead function) because the probe will output 0 millivolt.
+Now the pH 7 have an exact value of 2.5v (or what you measure) because the probe will output 0 millivolt.
+
+In my case I could only lower voltage to 2.548V. 
 
 ## The steps
 
 Now you need one or more buffer solutions depending the range and precision you want. Ideally you should know the range of the measure you want to do with your system. 
 
-I use water (upcoming beer) between pH 5 and pH 7, then I choose the buffer 4.01 (and 6.86 to verify my stuff). If you usually measure pH between 8 and 10 choose buffer 9.18 (eventually 6.86 also).
+I use upcoming beer between pH 5 and pH 7. Therefore I choose the buffer 4.01 (and 6.86 to verify). If you usually measure pH between 8 and 10 choose buffer 9.18 (eventually 6.86 to verify).
 
 
-Connect the (clean) probe and put it in the buffer then let it stabilize for a minute. You know it's stable when it goes up and down (3.04 then 3.05 then 3.03 then 3.04). Take note of the voltmeter value, in my example it's 3.05v.
+Connect the (clean) probe and put it in the buffer then let it stabilize for a minute. You know it's stable when it goes up and down (e.x. 3.04 then 3.05 then 3.03 then 3.04). Take note of the voltmeter value. At this Example it comes out at 3.05V at 4.01 pH buffer.
 
 ## Unit per step
 
@@ -155,12 +157,12 @@ To determine the Unit per Step (=PH_step in formula) is important to know.
 32767 possible values between -Gain max V and 0v
 
 With gain 1 (+-4.096V)
-print('%d - %.5f V'% (value, float(value)*4.096/32768.0))
+
 voltage = measure * 4.096 / 32768 ; //classic digital to voltage conversion
 
-// PH_step = (voltage@PH7 - voltage@PH4) / (PH7 - PH4) = (2.5-3.05) / (7-4) = (-.55/2.99) = -0.1839....
+PH_step = (voltage@PH7 - voltage@PH4) / (PH7 - PH4.01) = (2.5-3.05) / (7-4,01) = (-.55/2.99) = -0.1839....
 
-// PH_probe = PH7 - ((voltage@PH7 - voltage@probe) / PH_step)
+PH_probe = PH7 - ((voltage@PH7 - voltage@probe) / PH_step)
 
 phvalue = 7 + ((2.5 - voltage) / *0.1839* )
 
@@ -172,8 +174,8 @@ The main calibaration is already described above.
 
 Keep in mind that it takes several minutes to get the right pH value.
 
-When using in the rotating mash no stable values are shown but in a probe of mash (ex. a glass) it was very stable.
-Values matched with a other pH measurement tool.
+When using in the rotating mash no stable values are shown but in a probe of mash (ex. a glass) it is stable.
+My measured Values matched with a other pH measurement tools.
 
 Please do changes of the formula in the code of the file "__init__.py". 
 It is situated in the folder
@@ -186,27 +188,27 @@ I never tryed that until now.
 # Parameter
 
 ## Name
-Text as You want
+Text as You want. Mybe like "pH Sensor".
 
 ## Type
-Name of the pH Sensor Modul like PHSensorADS1x15
+Name of the pH Sensor Modul: PHSensorADS1x15
 
 ## ADS1x15 Address
 this is the I2C address of the ADS module.
 **Default ist 0x48.**
 If there are two or more modules with the same address you can choose a different address.
 This means you have to solder connections in a different way. Have a look in the ADS1x15-datasheed.
-This parameter Is rarely used. So in most cases entering 0x48 will do it.
+This parameter is rarely used. So in most cases entering 0x48 will do it.
 
 ## ADS1x15 Channel
 this is the channel you want to read. There are up to 4 channels called A0-A3.
-You have to connect the sensor to the channel.
+You have to connect the sensor to one of the channels.
 
 ## ADS1x15 Gain
 this is the amplifier of the ADS module.
-These are the selectible ranges:
+These are the selectable ranges:
 
-For example: Choose a gain of 1 for reading voltages from 0 to 4.09V.
+For example: Choose a gain of 1 for reading voltages from 0 to 4.09V (ok it is -4.096V to +4.096V bit negative values are scipped for now :-)).
 **Gain 1 will be the right parameter for the pH probe.**
 
 Or pick a different gain to change the range of voltages that are read:
@@ -269,11 +271,11 @@ There are only some lines to change.
 I use the ADS115 in a CraftBeerPi Extensionboard 3 in combination with a livel shifter
 
 # Known Problems
-- This is just to show how to use the ADS1115 to show values
-- You hae to find out the right parameter to show the right voltage values and the right pH values
+
+- You have to find out the right parameter to show the right voltage values and the right pH values
 - When using in the rotating mash no stable values are shown 
 - Wrong spelling
-- no temperature calibration
+- no temperature calibration, buffer ist calibrated to 25°C, so probes should also habe 25°C.
 
 
 # Support
