@@ -25,6 +25,7 @@ But first you have to delete the Folder
     
     `sudo rm -r /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115/`
 
+
 3. Reboot at least CBPi3
 
 
