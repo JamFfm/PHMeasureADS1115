@@ -14,9 +14,9 @@
 # differential.py
 # simpletest.py
 # assembled by JamFfm
-# Version 0.0.0.4
+# Version 1.0.0.5
 
-DEBUG = True
+DEBUG = False
 from ADS1x15 import ADS1115
 from modules import cbpi
 from modules.core.hardware import SensorActive
@@ -31,8 +31,9 @@ from modules.core.props import Property
 #  -   8 = +/-0.512V
 #  -  16 = +/-0.256V
 # See table 3 in the ADS1015/ADS1115 datasheet for more info on gain.
-# GAIN = 1
-VOLTAGEDIFFERENZ = 0.009
+# GAIN = 1 is selectable as parameter in Hardware Settings->Sensor menu of CBPi
+VOLTAGEOFFSET = 0.009  # put here your values
+
 
 @cbpi.sensor
 class PHSensorADS1x15(SensorActive):
@@ -46,7 +47,6 @@ class PHSensorADS1x15(SensorActive):
     ADS1x15gain = Property.Select("ADS1x15 Gain", options=["0", "1", "2", "4", "8", "16"],
                                   description="Select gain of pH ADS1x15, default = 1, hint 2/3 can be selected "
                                               "by 0")
-
     # Use Data Types Voltage and Digits (ADS1x15) for calibration
 
     def get_unit(self):
@@ -80,15 +80,14 @@ class PHSensorADS1x15(SensorActive):
             gain = int(str(self.ADS1x15gain))
             address = int(str(self.ADS1x15address), 16)
             adc = ADS1115(address=address, busnum=1)
-            # adc = ADS1115(address=0x48, busnum=1)                                               # change Address here
 
-            if DEBUG: cbpi.app.logger.info('PH Sensor ADS1x115 channel    %s' % ch)               # debug channel
-            if DEBUG: cbpi.app.logger.info('PH Sensor ADS1x115 self.ADS1x15address   %s' % self.ADS1x15address)  # debug
+            if DEBUG: cbpi.app.logger.info('PH Sensor ADS1x115 channel   %s' % ch)                   # debug channel
+            if DEBUG: cbpi.app.logger.info('PH Sensor ADS1x115 address   %s' % self.ADS1x15address)  # debug
             value = adc.read_adc(ch, gain=gain)
-            if DEBUG: cbpi.app.logger.info('PH Sensor ADS1x115 value     %s' % value)             # debug or calibration
+            if DEBUG: cbpi.app.logger.info('PH Sensor ADS1x115 value     %s' % value)         # debug or calibration
 
-            voltage = ((float(value)*4.096 / 32767) - VOLTAGEDIFFERENZ)
-            if DEBUG: cbpi.app.logger.info('PH Sensor ADS1x115 voltage %.3f'   % voltage)         # debug or calibration
+            voltage = ((float(value)*4.096 / 32767) - VOLTAGEOFFSET)
+            if DEBUG: cbpi.app.logger.info('PH Sensor ADS1x115 voltage   %.3f' % voltage)     # debug or calibration
 
             # phvalue = ("%.2f" % (7 + ((2.564 - voltage) / 0.1839)))                         # better around pH 7 and 6
             phvalue = ("%.2f" % (7 + ((2.548 - voltage) / 0.17826)))                          # better around pH 5
