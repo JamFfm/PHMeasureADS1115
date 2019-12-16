@@ -223,9 +223,11 @@ If you have no idea enter 1
 
 ## Data Type
 
+
 - **Digit:**  
     This shows the value of the MCP 3008 and runs from 0-1024.
     This is the basic of all measurement.
+
 
 
 - **Voltage:** 
@@ -242,6 +244,7 @@ If you have no idea enter 1
 
     Check it by this: Put a voltmeter to measure the voltage between GND and Po.
     PH ist calculated by voltage so it should be checked with voltmeter.
+
 
 
 - **pH Value:** 
