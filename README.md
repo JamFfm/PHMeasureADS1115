@@ -2,23 +2,53 @@
 
 # PHMeasureADS1115 add-on for CraftBeerPi 3
 
-This is Beta Software
-
 *Craftbeerpi3* sensor for measuring ph values.
 Using the ADS115 A/D via I2C connection
 
-The mash can be between 4.5pH and 5.8pH.
+
+# How to Install
+
+1. Load the NEXTIONDisplay addin from the CraftbeerPi3 addin section (not jet available).
+
+    Workaround:
+
+    Key in in the command box of Raspi
+
+    ```python
+    git clone https://github.com/JamFfm/PHMeasureADS1115.git -b master --single-branch /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115
+    ```
+    
+A update is done by the same commands unless it is not in the oficial add on list.
+
+But first you have to delete the Folder
+    
+    ```python
+    sudo rm -r /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115/
+    ```
+
+3. Reboot at least CBPi3
+
+
+# What for?
+
+The pH has got an influence on the beer taste. Please inforn yourself in the literature.
+Usually the mash will be between 4.5pH and 5.8pH.
 
 >**The target pH for the mash usually should be between 5.3pH and 5.7pH**
 
-Therefore we should know the pH of the mash
+Therefore it is important to know the pH of the mash.
 
 German link to ph in Beer
 
 - https://www.maischemalzundmehr.de/index.php?inhaltmitte=exp_maischph
 
+
 # Advantages
-works much more stable like the MCP3008 IC Module.
+
+- Works much more stable/precise like the MCP3008 IC Module.
+- I2C connection is very easy to handle. 
+- The driver is build in. No need to install software modules.
+- This is the supposed ADS on the CBPi Extentionboard 3 (just solder ADS, Levelshifter and connect probe board with screwterminals)
 
  
 # The probe and board for this Craftbeerpi 3 addon
@@ -55,29 +85,14 @@ To connect the ADS1115 to the Raspberry Pi use the following connections:
 - Alert     have a look at the specs of ADS1115 for Alert events
 - A0        to Po of the PhMeasure Board. Put a level shifter 5v/3,3v inbetween because the Raspi pin can only stand 3.3v
 
+Please have a look here:
+
+http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
+
 ![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/RaspiGPIOI2C.jpg "Example wiring, have a look at wireing I2C")
 
 
-# How to Install
 
-1. Load the NEXTIONDisplay addin from the CraftbeerPi3 addin section (not jet available).
-
-    Workaround:
-
-    Key in in the command box of Raspi
-
-    ```python
-    git clone https://github.com/JamFfm/PHMeasureADS1115.git -b master --single-branch /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115
-    ```
-    
-    A update is done by the following commands in the command box of the Raspi
-    
-    ```python
-    cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115
-    git pull
-    ```
-
-3. Reboot at least CBPi3
 
 
 # Board description
