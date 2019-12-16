@@ -8,7 +8,7 @@ Using the ADS115 A/D via I2C connection
 
 # How to Install
 
-1. Load the NEXTIONDisplay addin from the CraftbeerPi3 addin section (not jet available).
+1. Load the PHMeasureADS1115 addin from the CraftbeerPi3 addin section (not jet available).
 
     Workaround:
 
