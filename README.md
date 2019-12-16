@@ -193,7 +193,7 @@ Name of the pH Sensor Modul like PHSensorADS1x15
 
 ## ADS1x15 Address
 this is the I2C address of the ADS module.
-Default ist 0x48.
+**Default ist 0x48.**
 If there are two or more modules with the same address you can choose a different address.
 This means you have to solder connections in a different way. Have a look in the ADS1x15-datasheed.
 This parameter Is rarely used. So in most cases entering 0x48 will do it.
@@ -207,7 +207,7 @@ this is the amplifier of the ADS module.
 These are the selectible ranges:
 
 For example: Choose a gain of 1 for reading voltages from 0 to 4.09V.
-this will be the right parameter für the pH probe.
+This will be the right parameter für the pH probe.
 
 Or pick a different gain to change the range of voltages that are read:
 - 2/3 = +/-6.144V     we use 0 for this range
@@ -219,28 +219,42 @@ Or pick a different gain to change the range of voltages that are read:
 
 See table 3 in the ADS1015/ADS1115 datasheet for more info on gain.
 
-If you have no idea enter 1.
+**If you have no idea enter 1**
 
 ## Data Type
 
-- Digit:  
+- **Digit:**  
 This shows the value of the MCP 3008 and runs from 0-1024.
 This is the basic of all measurement.
 
 
-- Voltage: 
+- **Voltage:** 
 This shows the calculated value of the Voltage measurement.
-Voltage = 5 / 1024.0 * Digit
-5 is the basic voltage of the Board
-This means 1024 digit is equal to 5V.
+It depends on the Gain selected.
+
+Example: Gain 1 = +/-4.096V
+
+Voltage = ((4.096V * Digit) / 32767) - offset
+
+This means 32767 digit is equal to 4.096V.
+
+Why only 32767? Because there are another 32767 values of the negative numbers. But we only deal with the positive number range.
+
+Check it by this: Put a voltmeter to measure the voltage between GND and Po.
+PH ist calculated by voltage so it should be checked with voltmeter.
 
 
-- pH Value: 
+- **pH Value:** 
 This shows the calculated value of the pH measurment.
-phvalue = 7 + ((2.532 - voltage) / *0.1839* )
-As discribed above the *0.1839* has to be adopted in the code.
 
-Maybe the 2.532 has to be adopted to the voltage value you measure with the short circuit between the the small BNC hole and the external part of BNC.
+phvalue = 7 + ((2.532V - measured_voltage) / *0.1839* )
+
+As discribed above (calibration) the *0.1839* has to be adopted in the code.
+You may need a different factor. So this one is always **individual**
+
+Example I used (7 + ((2.548V - measured_voltage) / 0.17826))
+
+Maybe the 2.532V (or 2.548V) has to be adopted to the voltage value you measure with the short circuit between the the small BNC hole and the external part of BNC. The voltage of short circuit is the aquivelent to pH 7.
 
 
 # Hint
