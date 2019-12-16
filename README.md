@@ -23,6 +23,7 @@ A update is done by the same commands unless it is not in the oficial add on lis
 
 But first you have to delete the Folder
     
+    
     `sudo rm -r /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115/`
 
 
