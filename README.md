@@ -19,11 +19,11 @@ Using the ADS115 A/D via I2C connection
     `
     
     
-A update is done by the same commands unless it is not in the oficial add on list.
+2. A update is done by the same commands unless it is not in the oficial add on list.
 
-But first you have to delete the Folder
+    But first you have to delete the Folder
 
-`sudo rm -r /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115/`
+    `sudo rm -r /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115/`
 
 3. Reboot at least CBPi3
 
