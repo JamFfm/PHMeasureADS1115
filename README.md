@@ -59,7 +59,7 @@ but there are same in Aliexpress.
 Search for this: "Liquid PH Value Erkennung Detect Modul +BNC Electrode Probe for Arduino"
 
 
-![Test Graph](https://github.com/JamFfm/PHMeasure/blob/master/PHSet.jpg "set")
+![Test Graph](https://github.com/PHMeasureADS1115/PHMeasure/blob/master/PHSet.jpg "set")
 
 **The probe board is an analog sensor. RaspberryPi can read only digital sensors.
 Therefore you need an analog/digital converter like the ADS1115 (16Bit)**
@@ -68,7 +68,7 @@ Therefore you need an analog/digital converter like the ADS1115 (16Bit)**
   
 # How to connect
 
-![Test Graph](https://github.com/JamFfm/PHMeasure/blob/master/RaspberryPiPHSensorSteckplatine.png "Example wiring, not campatible with code. Have a look at Software SPI")
+![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/ADS1115Wireing.jpg "Example wiring, not campatible with code. Have a look at Software SPI")
 Be aware that you use the **connections below** if you don't change the code. Not use the MCP3008 connections in the picture!
 **But use the Picture to wire the levelshifter and the probe-board. In this picture channel 0 is connected**
 
@@ -96,7 +96,7 @@ http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
 
 # Board description
 
-![Test Graph](https://github.com/JamFfm/PHMeasure/blob/master/1.0x0.jpg "powerampfilter")
+![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/1.0x0.jpg "powerampfilter")
 
 
 
