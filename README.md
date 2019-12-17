@@ -112,57 +112,38 @@ http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
 
 # Calibration: 
 
-## The offset
+## Calibration Script
 
-The **offset** is the shifting of all pH values to a specific voltage range. If a pH 7 output a voltage of 2.2v and pH 8 a voltage of 2.1v, then a shift of +0.3v move the pH 7 to 2.5v and the pH 8 to 2.4v. 
+There is a very small script to determine the Factor and the Formula:
+Put a voltmeter to measure the voltage between GND and Po to measure voltage.
+You need the measured voltage while producing a shortcut between inner pole and outer area of the BNC of the probeboard.
+You need the measured voltage when measuring the buffer pH 4.01
 
+ `cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115`
 
-The offset can be done on the board or via software but it's probably easyer on the board because it's probe independant and there are less programming to do.
+ `python calibration.py`
 
+Follow instructions.
 
-Connect GND (both) of the probeboard to Raspi GND and and probeboard Vcc to Raspi 5v. Please use a levelshifter to avoid damage at the GPIO which only support 3.3v. 
+## The formula
 
-Remove the probe (disconnect BNC) and do a short circuit between the the small BNC hole and the external part of BNC. Use a wire to do that. 
+The ADS 1115 has got 16Bit precision.
 
-Put a voltmeter to measure the voltage between probeboard GND and probeboard Po. Adjust the pot (close BNC) until the output is nearest to 2.5v. 
+16 Bit = 32767 possible values between 0V and Gain maxV and 32767 possible values between -Gain maxV and 0V.
+We assume there is a voltage measure at shortcut and second at measuring pH 4.01 buffer.
+See below at end of this text for more explinations.
 
-Now the pH 7 have an exact value of 2.5v (or what you measure) because the probe will output 0 millivolt.
-
-In my case I could only lower voltage to 2.548V. 
-
-## The steps
-
-Now you need one or more buffer solutions depending the range and precision you want. Ideally you should know the range of the measure you want to do with your system. 
-
-I use upcoming beer between pH 5 and pH 7. Therefore I choose the buffer 4.01 (and 6.86 to verify). If you usually measure pH between 8 and 10 choose buffer 9.18 (eventually 6.86 to verify).
-
-
-Connect the (clean) probe and put it in the buffer then let it stabilize for a minute. You know it's stable when it goes up and down (e.x. 3.04 then 3.05 then 3.03 then 3.04). Take note of the voltmeter value. At this Example it comes out at 3.05V at 4.01 pH buffer.
-
-## Unit per step
-
-The PH_step calculation is quite simple. You take the difference between the two known voltage, in my example 2.5v@pH7 and 3.05v@pH4.01 which is -0.55v. 
-
-It's the voltage range equivalent of the pH range from 7 to 4.01, which is 2.99 pH units. A small division of the voltage by pH units gives you a volts per pH number (0,1839... in my case).
-
-The PH_probe is calculated by taking the known pH 7 voltage (2.5v) where we add some PH_step to match the probe voltage. This means that a pH of 8 have a voltage value of 2.5v (pH 7) + 0.1839 (1 unit/step); pH 9 then is 2.5v + 0.1839 + 0.1839 = 2.87v.
-
-To determine the Unit per Step (=PH_step in formula) is important to know.
-
-## Finally the code
-
-16 Bit = 32767 possible values between 0V and Gain maxV and
-32767 possible values between -Gain maxV and 0V
 
 With gain 1 (+-4.096V)
 
 voltage = measure * 4.096 / 32768 ; //classic digital to voltage conversion
 
-PH_step = (voltage@PH7 - voltage@PH4) / (PH7 - PH4.01) = (2.5-3.05) / (7-4,01) = (-.55/2.99) = -0.1839....
+PH_step = (voltage@PH7 - voltage@PH4.01) / (PH7 - PH4.01) = (2.5-3.05) / (7-4.01) = (-.55/2.99) = -0.1839....
 
 PH_probe = PH7 - ((voltage@PH7 - voltage@probe) / PH_step)
 
 phvalue = 7 + ((2.5 - voltage) / *0.1839* )
+
 
 ## Calibration Script
 
@@ -177,6 +158,7 @@ There is a very small script to determine the Factor and the formula:
  `python calibration.py`
 
 - Follow instructions
+
 
 # Usage
 
@@ -320,3 +302,61 @@ I got all my knowledge from these links:
   
   
 - https://raspberrypi.stackexchange.com/questions/96653/calibrate-ph-4502c-ph-meter
+
+
+# Calibration more explinations
+
+## The offset
+
+The **offset** is the shifting of all pH values to a specific voltage range. If a pH 7 output a voltage of 2.2v and pH 8 a voltage of 2.1v, then a shift of +0.3v move the pH 7 to 2.5v and the pH 8 to 2.4v. 
+
+
+The offset can be done on the board or via software but it's probably easyer on the board because it's probe independant and there are less programming to do.
+
+
+Connect GND (both) of the probeboard to Raspi GND and and probeboard Vcc to Raspi 5v. Please use a levelshifter to avoid damage at the GPIO which only support 3.3v. 
+
+Remove the probe (disconnect BNC) and do a short circuit between the the small BNC hole and the external part of BNC. Use a wire to do that. 
+
+Put a voltmeter to measure the voltage between probeboard GND and probeboard Po. Adjust the pot (close BNC) until the output is nearest to 2.5v. 
+
+Now the pH 7 have an exact value of 2.5v (or what you measure) because the probe will output 0 millivolt.
+
+In my case I could only lower voltage to 2.548V. 
+
+## The steps
+
+Now you need one or more buffer solutions depending the range and precision you want. Ideally you should know the range of the measure you want to do with your system. 
+
+I use upcoming beer between pH 5 and pH 7. Therefore I choose the buffer 4.01 (and 6.86 to verify). If you usually measure pH between 8 and 10 choose buffer 9.18 (eventually 6.86 to verify).
+
+
+Connect the (clean) probe and put it in the buffer then let it stabilize for a minute. You know it's stable when it goes up and down (e.x. 3.04 then 3.05 then 3.03 then 3.04). Take note of the voltmeter value. At this Example it comes out at 3.05V at 4.01 pH buffer.
+
+## Unit per step
+
+The PH_step calculation is quite simple. You take the difference between the two known voltage, in my example 2.5v@pH7 and 3.05v@pH4.01 which is -0.55v. 
+
+It's the voltage range equivalent of the pH range from 7 to 4.01, which is 2.99 pH units. A small division of the voltage by pH units gives you a volts per pH number (0,1839... in my case).
+
+The PH_probe is calculated by taking the known pH 7 voltage (2.5v) where we add some PH_step to match the probe voltage. This means that a pH of 8 have a voltage value of 2.5v (pH 7) + 0.1839 (1 unit/step); pH 9 then is 2.5v + 0.1839 + 0.1839 = 2.87v.
+
+To determine the Unit per Step (=PH_step in formula) is important to know.
+
+## Finally the code
+
+The ADS 1115 has 16Bit precision.
+
+16 Bit = 32767 possible values between 0V and Gain max V and
+32767 possible values between -Gain max V and 0v
+
+With gain 1 (+-4.096V)
+
+voltage = measure * 4.096 / 32768 ; //classic digital to voltage conversion
+
+PH_step = (voltage@PH7 - voltage@PH4.01) / (PH7 - PH4.01) = (2.5-3.05) / (7-4.01) = (-.55/2.99) = -0.1839....
+
+PH_probe = PH7 - ((voltage@PH7 - voltage@probe) / PH_step)
+
+phvalue = 7 + ((2.5 - voltage) / *0.1839* )
+
