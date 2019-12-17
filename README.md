@@ -78,11 +78,11 @@ To connect the ADS1115 to the Raspberry Pi use the following connections:
 
 - ADS GND   to RASPI GND 
 - ADS VDD   to RASPI 5v 
-- ADS SCL   to RASPI SCL (daisychain possible)
-- ADS SCA   to RASPI SCA (daisychain possible)
+- ADS SCL   to RASPI SCL (daisychain possible), Put a level shifter 5v/3,3v inbetween because the Raspi pin can only stand 3.3v
+- ADS SCA   to RASPI SCA (daisychain possible), Put a level shifter 5v/3,3v inbetween because the Raspi pin can only stand 3.3v
 - Address   have a look at the specs of ADS1115 for changing adress
 - Alert     have a look at the specs of ADS1115 for Alert events
-- A0        to Po of the PhMeasure Board. Put a level shifter 5v/3,3v inbetween because the Raspi pin can only stand 3.3v
+- A0        to Po of the PhMeasure Board. 
 
 Please have a look here:
 
