@@ -69,8 +69,8 @@ Therefore you need an analog/digital converter like the ADS1115 (16Bit)**
 # How to connect
 
 ![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/ADS1115Wireing.jpg "Example wiring, not campatible with code. Have a look at Software SPI")
-Be aware that you use the **connections below** if you don't change the code. Not use the MCP3008 connections in the picture!
-**But use the Picture to wire the levelshifter and the probe-board. In this picture channel 0 is connected**
+
+
 
 ## Connect I2C
 
@@ -78,10 +78,10 @@ To connect the ADS1115 to the Raspberry Pi use the following connections:
 
 - ADS GND   to RASPI GND 
 - ADS VDD   to RASPI 5v 
-- ADS SCL   to RASPI SCL (daisychain possible), Put a level shifter 5v/3,3v inbetween because the Raspi pin can only stand 3.3v
-- ADS SCA   to RASPI SCA (daisychain possible), Put a level shifter 5v/3,3v inbetween because the Raspi pin can only stand 3.3v
-- Address   have a look at the specs of ADS1115 for changing adress
-- Alert     have a look at the specs of ADS1115 for Alert events
+- ADS SCL   to RASPI SCL (daisychain possible), put a level shifter 5v/3.3v inbetween because the Raspi pins can only stand 3.3v
+- ADS SCA   to RASPI SCA (daisychain possible), put a level shifter 5v/3.3v inbetween
+- Address   have a look at the specs of ADS1115 for changing adress, put a level shifter 5v/3.3v inbetween
+- Alert     have a look at the specs of ADS1115 for Alert events, put a level shifter 5v/3.3v inbetween
 - A0        to Po of the PhMeasure Board. 
 
 Please have a look here:
@@ -89,8 +89,6 @@ Please have a look here:
 http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
 
 ![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/RaspiGPIOI2C.jpg "Example wiring, have a look at wireing I2C")
-
-
 
 
 
@@ -153,8 +151,8 @@ To determine the Unit per Step (=PH_step in formula) is important to know.
 
 ## Finally the code
 
-16 Bit = 32767 possible values between 0V and Gain max V and
-32767 possible values between -Gain max V and 0v
+16 Bit = 32767 possible values between 0V and Gain maxV and
+32767 possible values between -Gain maxV and 0V
 
 With gain 1 (+-4.096V)
 
@@ -168,16 +166,17 @@ phvalue = 7 + ((2.5 - voltage) / *0.1839* )
 
 ## Calibration Script
 
-There is a very small script to determine the Factor and the Formula:
-Put a voltmeter to measure the voltage between GND and Po to measure voltage.
-You need the measured voltage while producing a shortcut between inner pole and outer area of the BNC of the probeboard.
-You need the measured voltage when measuring the buffer pH 4.01
+There is a very small script to determine the Factor and the formula:
+- Put a voltmeter to measure the voltage between GND and Po to measure voltage.
+- You need the measured voltage while producing a shortcut between inner pole and outer area of the BNC of the probeboard.
+- You need the measured voltage when measuring the buffer pH 4.01
+- in the commandbox keyin the following:
 
  `cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115`
 
  `python calibration.py`
 
-Follow instructions
+- Follow instructions
 
 # Usage
 
@@ -291,7 +290,8 @@ I use the ADS115 in a CraftBeerPi Extensionboard 3 in combination with a livel s
 - You have to find out the right parameter to show the right voltage values and the right pH values
 - When using in the rotating mash no stable values are shown 
 - Wrong spelling
-- no temperature calibration, buffer ist calibrated to 25°C, so probes should also habe 25°C.
+- no temperature calibration, buffer ist calibrated to 25°C, so probes should also habe 25°C
+- I bought 3 probes. Only one shows stable values. One is useless and one shows fairly credible values.
 
 
 # Support
