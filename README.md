@@ -59,7 +59,7 @@ but there are same in Aliexpress.
 Search for this: "Liquid PH Value Erkennung Detect Modul +BNC Electrode Probe for Arduino"
 
 
-![Test Graph](https://github.com/PHMeasureADS1115/PHMeasure/blob/master/PHSet.jpg "set")
+![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/PHSet.jpg "set")
 
 **The probe board is an analog sensor. RaspberryPi can read only digital sensors.
 Therefore you need an analog/digital converter like the ADS1115 (16Bit)**
