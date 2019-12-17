@@ -115,15 +115,15 @@ http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
 ## Calibration Script
 
 There is a very small script to determine the Factor and the Formula:
-Put a voltmeter to measure the voltage between GND and Po to measure voltage.
-You need the measured voltage while producing a shortcut between inner pole and outer area of the BNC of the probeboard.
-You need the measured voltage when measuring the buffer pH 4.01
+- Put a voltmeter to measure the voltage between GND and Po to measure voltage.
+- You need the measured voltage while producing a shortcut between inner pole and outer area of the BNC of the probeboard.
+- You need the measured voltage while measuring the buffer pH 4.01.
 
  `cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115`
 
  `python calibration.py`
 
-Follow instructions.
+- Follow instructions.
 
 ## The formula
 
@@ -164,7 +164,7 @@ There is a very small script to determine the Factor and the formula:
 
 Use this sensor as any other sensor in Craftbeerpi 3.
 The Digit and Voltage values can help to calibrate. They are not needed for pH measurement.
-The main calibaration is already described above. 
+The main calibaration is already described above and more precise at he end of this file. 
 
 Keep in mind that it takes several minutes to get the right pH value.
 
