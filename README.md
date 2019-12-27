@@ -304,7 +304,7 @@ I got all my knowledge from these links:
 - https://raspberrypi.stackexchange.com/questions/96653/calibrate-ph-4502c-ph-meter
 
 
-# Calibration more explinations
+# Calibration more explanations
 
 ## The offset
 
