@@ -68,7 +68,7 @@ Therefore you need an analog/digital converter like the ADS1115 (16Bit)**
   
 # How to connect
 
-![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/WiringADS1115_Steckplatine.jpg "Example wiring, not campatible with code. Have a look at Software SPI")
+![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/WiringADS1115_Steckplatine.png "Example wiring")
 
 
 
