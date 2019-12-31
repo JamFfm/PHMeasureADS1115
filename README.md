@@ -112,19 +112,6 @@ http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
 
 # Calibration: 
 
-## Calibration Script
-
-There is a very small script to determine the Factor and the Formula:
-- Put a voltmeter to measure the voltage between GND and Po to measure voltage.
-- You need the measured voltage while producing a shortcut between inner pole and outer area of the BNC of the probeboard.
-- You need the measured voltage while measuring the buffer pH 4.01.
-
- `cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115`
-
- `python calibration.py`
-
-- Follow instructions.
-
 ## The formula
 
 The ADS 1115 has got 16Bit precision.
@@ -159,6 +146,7 @@ There is a very small script to determine the Factor and the formula:
 
 - Follow instructions
 
+- Follow Usage
 
 # Usage
 
@@ -171,7 +159,7 @@ Keep in mind that it takes several minutes to get the right pH value.
 When using in the rotating mash no stable values are shown but in a probe of mash (ex. a glass) it is stable.
 My measured Values matched with a other pH measurement tools.
 
-Please do changes of the formula in the code of the file ""__init__.py"". 
+**Please do changes of the formula in the code of the file ""__init__.py"".**
 It is situated in the folder
 
 /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115/
