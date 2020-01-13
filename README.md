@@ -88,7 +88,7 @@ Please have a look here:
 
 http://www.netzmafia.de/skripten/hardware/RasPi/Projekt-ADS1115/index.html
 
-![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/RaspiGPIOI2C.jpg "Example wiring, have a look at wireing I2C")
+![Test Graph](https://github.com/JamFfm/PHMeasureADS1115/blob/master/RaspiGPIOI2C.jpg "Example wiring, have a look at wiring I2C")
 
 
 
