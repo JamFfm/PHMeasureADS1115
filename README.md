@@ -8,24 +8,17 @@ Using the ADS115 A/D via I2C connection
 
 # How to Install
 
-1. Load the PHMeasureADS1115 addin from the CraftbeerPi3 addin section (not jet available).
+1. Load the PHMeasureADS1115 addin from the CraftbeerPi3 addin section.
 
-    Workaround:
+    Just if you need a workaround:
 
     Key in in the command box of Raspi
 
     
     `git clone https://github.com/JamFfm/PHMeasureADS1115.git -b master --single-branch /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115   
     `
-    
-    
-2. A update is done by the same commands unless it is not in the oficial add on list.
 
-    But first you have to delete the Folder
-
-    `sudo rm -r /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115/`
-
-3. Reboot at least CBPi3
+2. Reboot at least CBPi3
 
 
 # What for?
