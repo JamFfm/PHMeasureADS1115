@@ -135,11 +135,7 @@ There is a very small script to determine the Factor and the formula:
 
  `cd /home/pi/craftbeerpi3/modules/plugins/PHMeasureADS1115`
 
- `python calibration.py`
- 
- or as Gui based script doing exactly the same:
- 
- `python GuiCalibration.py`
+ `python calibration.py`  or as Gui based script doing exactly the same: `python GuiCalibration.py`
 
 - Follow instructions
 
