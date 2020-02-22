@@ -10,9 +10,9 @@ from Tkinter import *
 
 def button_action():
     factor = round((float(ph7voltage_enter.get()) - float(ph401voltage_enter.get())) / 2.99, 5)
-    result_label.config(text="The Voltage per pH Factor is "+str(factor)+".\n\
-    Put it in the formula in line 93 of the file __init__.py :\n\
-    (7 + ((2.53- voltage) / "+str(factor)+"))")
+    result_label.config(text="The Voltage per pH factor is "+str(factor)+".\n\
+    Put it in the formula in line 114 of the file __init__.py :\n\
+    (7 + (("+str(float(ph7voltage_enter.get()))+"- voltage) / "+str(-1*factor)+"))")
 
 
 # Ein Fenster erstellen
